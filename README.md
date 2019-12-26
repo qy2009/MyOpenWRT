@@ -1,4 +1,4 @@
-# AutoBuild-OpenWrt
+# OpenWrt-AutoBuild
 
 使用GitHub Actions构建OpenWrt固件 [Lean's OpenWrt](https://github.com/coolsnowwolf/lede)   
 特此感谢P3TERX和esirplayground所做的工作：  
