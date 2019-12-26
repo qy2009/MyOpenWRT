@@ -1,9 +1,10 @@
+  
 #!/bin/bash
 #=================================================
 # Description: DIY script
 # Lisence: MIT
-# Author: eSirPlayground
-# Youtube Channel: https://goo.gl/fvkdwm 
+# Author: P3TERX
+# Blog: https://p3terx.com
 #=================================================
-#1. Modify default IP
+# 定制默认 IP
 sed -i 's/192.168.1.1/12.0.0.20/g' openwrt/package/base-files/files/bin/config_generate
