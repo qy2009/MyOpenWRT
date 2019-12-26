@@ -67,7 +67,7 @@ jobs:
     - name: 安装 feeds
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: 加载自定义配置
+    - name: 加载自定义配置 - OpenWrt-x86-64
       env:
         CONFIG_FILE: 'x86_64.config'
         DIY_SH: 'customize.sh'
