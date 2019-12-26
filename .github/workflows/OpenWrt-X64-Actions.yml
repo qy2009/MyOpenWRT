@@ -1,35 +1,44 @@
 #=================================================
+# https://github.com/P3TERX/Actions-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
 # Lisence: MIT
-# Author: eSirPlayground
-# Youtube Channel: https://goo.gl/fvkdwm 
+# Author: P3TERX
+# Blog: https://p3terx.com
 #=================================================
 
-name: Build_x86_64
+name: OpenWrt-x86-64-Actions
 
 on: 
-  release:
-    types: [published]
+# 发布触发
+#  release:
+#    types: [published]
 
-  # push:
-    # branches: 
-      # - master
+# 编辑触发
+#  push:
+#    branches: 
+#      - master
 
-  #schedule:
-  #  - cron: 0 8 * * 5
-  
+# config触发
+#  paths:
+#    - '.config'
+
+# 定时触发
+#  schedule:
+#    - cron: 0 18 * * *
+
+# 点赞触发
   watch:
     types: [started]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     steps:
-    - name: Checkout
+    - name: 校验本地文件
       uses: actions/checkout@master
 
-    - name: Initialization environment
+    - name: 初始化环境
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -46,42 +55,69 @@ jobs:
         curl -fsSL https://raw.githubusercontent.com/P3TERX/dotfiles/master/.bashrc >> ~/.bashrc
         sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-    - name: Clone source code
+    - name: 克隆源代码
       env: 
         REPO_URL: https://github.com/coolsnowwolf/lede
         REPO_BRANCH: master
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
 
-    - name: Update & Install feeds
-      working-directory: ./openwrt
-      run: |
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
-        ./scripts/feeds install -a
+    - name: 更新 feeds
+      run: cd openwrt && ./scripts/feeds update -a
 
-    - name: Configuration Customization - Build_x86_64
+    - name: 安装 feeds
+      run: cd openwrt && ./scripts/feeds install -a
+
+    - name: 加载自定义配置
       env:
         CONFIG_FILE: 'x86_64.config'
+        DIY_SH: 'customize.sh'
       run: |
+        [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x ./customize.sh && ./customize.sh
-        cd openwrt && make defconfig
-        
-    - name: Download package
-      working-directory: ./openwrt
+        chmod +x $DIY_SH
+        cd openwrt
+        ../$DIY_SH
+        make defconfig
+
+# 开启SSH
+#    - name: SSH connection to Actions
+#      uses: P3TERX/debugger-action@master
+
+    - name: 下载软件包
       run: |
-        make download -j$(nproc)
+        cd openwrt && make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: Build firmware
-      working-directory: ./openwrt
+    - name: 多线程编译
       run: |
-        echo -e "$(nproc) thread build."
-        make -j$(nproc) V=s
+        cd openwrt
+        echo -e "$(nproc) thread compile"
+        make -j$(nproc)
 
-    - name : Upload artifact
+    - name: 单线程编译
+      if: failure()
+      run: |
+        cd openwrt
+        make -j1 V=s
+
+    - name: 上传 bin 目录
       uses: actions/upload-artifact@master
+      if: always()
       with:
-        name: OpenWrt
+        name: OpenWrt_bin
         path: openwrt/bin
+
+    - name: 整理文件
+      if: always()
+      run: |
+        cd openwrt/bin/targets/*/*
+        rm -rf packages
+        echo "::set-env name=FIRMWARE::$(pwd)"
+
+    - name: 上传固件
+      uses: actions/upload-artifact@master
+      if: always()
+      with:
+        name: OpenWrt_firmware
+        path: ${{ env.FIRMWARE }}
