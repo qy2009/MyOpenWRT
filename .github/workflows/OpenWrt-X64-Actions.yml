@@ -101,13 +101,6 @@ jobs:
         cd openwrt
         make -j1 V=s
 
-    - name: 上传 bin 目录
-      uses: actions/upload-artifact@master
-      if: always()
-      with:
-        name: OpenWrt_bin
-        path: openwrt/bin
-
     - name: 整理文件
       if: always()
       run: |
