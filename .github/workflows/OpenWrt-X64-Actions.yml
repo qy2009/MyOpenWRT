@@ -20,7 +20,7 @@ on:
 
 # config触发
 #  paths:
-#    - '.config'
+#    - 'x86_64.config'
 
 # 定时触发
 #  schedule:
