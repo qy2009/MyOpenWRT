@@ -9,7 +9,7 @@
 name: OpenWrt-x86-64-Actions
 
 on: 
-# 发布触发
+# release触发
 #  release:
 #    types: [published]
 
