@@ -38,7 +38,7 @@ jobs:
     - name: 校验本地文件
       uses: actions/checkout@master
 
-    - name: 初始化环境
+    - name: 初始化编译环境
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
