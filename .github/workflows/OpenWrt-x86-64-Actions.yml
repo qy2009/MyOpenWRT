@@ -95,7 +95,7 @@ jobs:
         echo -e "$(nproc) thread compile"
         make -j$(nproc)
 
-    - name: 单线程编译
+    - name: 多线程编译失败，切换单线程编译
       if: failure()
       run: |
         cd openwrt
