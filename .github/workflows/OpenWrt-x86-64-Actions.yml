@@ -61,13 +61,13 @@ jobs:
         REPO_BRANCH: master
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
 
-    - name: 更新 feeds
+    - name: 更新源
       run: cd openwrt && ./scripts/feeds update -a
 
-    - name: 安装 feeds
+    - name: 安装源
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: 加载自定义配置 - OpenWrt-x86-64
+    - name: 创建自定义配置文件 - OpenWrt-x86-64
       env:
         CONFIG_FILE: 'x86_64.config'
         DIY_SH: 'customize.sh'
@@ -79,7 +79,7 @@ jobs:
         ../$DIY_SH
         make defconfig
 
-# 开启SSH
+# 开启SSH远程连接
 #    - name: SSH connection to Actions
 #      uses: P3TERX/debugger-action@master
 
@@ -95,11 +95,18 @@ jobs:
         echo -e "$(nproc) thread compile"
         make -j$(nproc)
 
-    - name: 多线程编译失败，切换单线程编译
+    - name: 多线程编译失败，尝试单线程编译
       if: failure()
       run: |
         cd openwrt
         make -j1 V=s
+
+    - name: 上传BIN目录
+      uses: actions/upload-artifact@master
+      if: always()
+      with:
+        name: OpenWrt_bin
+        path: openwrt/bin
 
     - name: 整理文件
       if: always()
