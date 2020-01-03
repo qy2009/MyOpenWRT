@@ -70,7 +70,7 @@ jobs:
     - name: 创建自定义配置文件 - OpenWrt-x86-64
       env:
         CONFIG_FILE: 'x86_64.config'
-        DIY_SH: 'customize.sh'
+        DIY_SH: 'Module.sh'
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
@@ -79,7 +79,7 @@ jobs:
         ../$DIY_SH
         make defconfig
 
-# 开启SSH远程连接
+#      开启SSH远程连接
 #    - name: SSH connection to Actions
 #      uses: P3TERX/debugger-action@master
 
@@ -101,12 +101,12 @@ jobs:
         cd openwrt
         make -j1 V=s
 
-    - name: 上传BIN目录
-      uses: actions/upload-artifact@master
-      if: always()
-      with:
-        name: OpenWrt_bin
-        path: openwrt/bin
+#    - name: 上传BIN目录
+#      uses: actions/upload-artifact@master
+#      if: always()
+#      with:
+#        name: OpenWrt_bin
+#        path: openwrt/bin
 
     - name: 整理文件
       if: always()
