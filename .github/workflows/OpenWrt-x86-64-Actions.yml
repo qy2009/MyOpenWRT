@@ -14,8 +14,8 @@ on:
     - cron: 0 18 * * *
 
 # release触发
-  release:
-    types: [published]
+#  release:
+#    types: [published]
 
 # 点赞触发
 #  watch:
@@ -69,11 +69,9 @@ jobs:
 
     - name: 创建自定义配置文件 - OpenWrt-x86-64
       env:
-        CONFIG_FILE: 'x86_64.config'
-        DIY_SH: 'Module.sh'
+        DIY_SH: 'OpenWrt-x86-64.sh'
       run: |
         [ -e files ] && mv files openwrt/files
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_SH
         cd openwrt
         ../$DIY_SH
@@ -95,11 +93,11 @@ jobs:
         echo -e "$(nproc) thread compile"
         make -j$(nproc)
 
-    - name: 多线程编译失败，尝试单线程编译
-      if: failure()
-      run: |
-        cd openwrt
-        make -j1 V=s
+#    - name: 多线程编译失败，尝试单线程编译
+#      if: failure()
+#      run: |
+#        cd openwrt
+#        make -j1 V=s
 
 #    - name: 上传BIN目录
 #      uses: actions/upload-artifact@master
