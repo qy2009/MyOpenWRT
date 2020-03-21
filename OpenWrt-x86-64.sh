@@ -8,7 +8,7 @@
 #=================================================
 
 # 定制默认IP
-sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
+sed -i 's/10.0.0.254/10.0.0.1/g' package/base-files/files/bin/config_generate
 
 # 替换默认Argon主题
 rm -rf package/lean/luci-theme-argon
@@ -80,13 +80,13 @@ EOF
 
 # 编译UEFI固件:
 cat >> .config <<EOF
-CONFIG_EFI_IMAGES=y
+#CONFIG_EFI_IMAGES=y
 EOF
 
 # IPv6支持:
 cat >> .config <<EOF
-CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
-CONFIG_PACKAGE_ipv6helper=y
+#CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
+#CONFIG_PACKAGE_ipv6helper=y
 EOF
 
 # 多文件系统支持:
@@ -145,7 +145,7 @@ EOF
 # LuCI主题:
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-theme-argon=y
-CONFIG_PACKAGE_luci-theme-netgear=y
+#CONFIG_PACKAGE_luci-theme-netgear=y
 EOF
 
 # 常用软件包:
