@@ -10,18 +10,10 @@
 # 定制默认IP
 sed -i 's/10.0.0.1/10.0.0.254/g' package/base-files/files/bin/config_generate
 
-# 替换默认Argon主题
-rm -rf package/lean/luci-theme-argon
-git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-
 # 添加第三方软件包
 git clone https://github.com/tty228/luci-app-serverchan package/luci-app-serverchan
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
 git clone https://github.com/jefferymvp/luci-app-koolproxyR
-#git clone https://github.com/kang-mk/luci-app-smartinfo package/luci-app-smartinfo
-
-
-
 
 #创建自定义配置文件 - OpenWrt-x86-64
 
@@ -86,8 +78,8 @@ EOF
 
 # IPv6支持:
 cat >> .config <<EOF
-# CONFIG_PACKAGE_dnsmasq_full_dhcpv6 is not set
-# CONFIG_PACKAGE_ipv6helper is not set
+CONFIG_PACKAGE_dnsmasq_full_dhcpv6 is not set
+CONFIG_PACKAGE_ipv6helper is not set
 EOF
 
 # 多文件系统支持:
@@ -102,56 +94,55 @@ EOF
 
 # 不要其他硬件支持:
 cat >> .config <<EOF
-# CONFIG_PACKAGE_kmod-8139cp is not set
-# CONFIG_PACKAGE_kmod-8139too is not set
-# CONFIG_PACKAGE_kmod-bnx2 is not set
-# CONFIG_PACKAGE_kmod-phy-realtek is not set
-# CONFIG_PACKAGE_kmod-r8125 is not set
-# CONFIG_PACKAGE_kmod-r8169 is not set
-# CONFIG_PACKAGE_kmod-usb-net-rtl8152 is not set
-# CONFIG_DEFAULT_kmod-ac97 is not set
-# CONFIG_DEFAULT_kmod-ath10k is not set
-# CONFIG_DEFAULT_kmod-ath5k is not set
-# CONFIG_DEFAULT_kmod-ath9k is not set
-# CONFIG_DEFAULT_kmod-ath9k-htc is not set
-# CONFIG_DEFAULT_kmod-sound-hda-codec-realtek is not set
-# CONFIG_DEFAULT_kmod-sound-hda-codec-via is not set
-# CONFIG_DEFAULT_kmod-sound-hda-core is not set
-# CONFIG_DEFAULT_kmod-sound-via82xx is not set
-# CONFIG_DEFAULT_kmod-usb-audio is not set
-# CONFIG_DEFAULT_kmod-usb-hid is not set
-# CONFIG_DEFAULT_kmod-usb-net is not set
-# CONFIG_DEFAULT_kmod-usb-net-asix is not set
-# CONFIG_DEFAULT_kmod-usb-net-asix-ax88179 is not set
-# CONFIG_DEFAULT_kmod-usb-net-rtl8150 is not set
-# CONFIG_DEFAULT_kmod-usb-net-rtl8152 is not set
+CONFIG_PACKAGE_kmod-8139cp is not set
+CONFIG_PACKAGE_kmod-8139too is not set
+CONFIG_PACKAGE_kmod-bnx2 is not set
+CONFIG_PACKAGE_kmod-phy-realtek is not set
+CONFIG_PACKAGE_kmod-r8125 is not set
+CONFIG_PACKAGE_kmod-r8169 is not set
+CONFIG_PACKAGE_kmod-usb-net-rtl8152 is not set
+CONFIG_DEFAULT_kmod-ac97 is not set
+CONFIG_DEFAULT_kmod-ath10k is not set
+CONFIG_DEFAULT_kmod-ath5k is not set
+CONFIG_DEFAULT_kmod-ath9k is not set
+CONFIG_DEFAULT_kmod-ath9k-htc is not set
+CONFIG_DEFAULT_kmod-sound-hda-codec-realtek is not set
+CONFIG_DEFAULT_kmod-sound-hda-codec-via is not set
+CONFIG_DEFAULT_kmod-sound-hda-core is not set
+CONFIG_DEFAULT_kmod-sound-via82xx is not set
+CONFIG_DEFAULT_kmod-usb-audio is not set
+CONFIG_DEFAULT_kmod-usb-hid is not set
+CONFIG_DEFAULT_kmod-usb-net is not set
+CONFIG_DEFAULT_kmod-usb-net-asix is not set
+CONFIG_DEFAULT_kmod-usb-net-asix-ax88179 is not set
+CONFIG_DEFAULT_kmod-usb-net-rtl8150 is not set
+CONFIG_DEFAULT_kmod-usb-net-rtl8152 is not set
 EOF
 
 # USB3.0支持:
-# cat >> .config <<EOF
+cat >> .config <<EOF
 # CONFIG_PACKAGE_kmod-usb-ohci is not set
 # CONFIG_PACKAGE_kmod-usb-ohci-pci is not set
 # CONFIG_PACKAGE_kmod-usb2 is not set
 # CONFIG_PACKAGE_kmod-usb2-pci is not set
 # CONFIG_PACKAGE_kmod-usb3 is not set
-# EOF
+EOF
 
 # 第三方插件选择:
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-app-serverchan=y
 CONFIG_PACKAGE_luci-app-adguardhome=y
-# CONFIG_PACKAGE_luci-app-smartinfo is not set
 CONFIG_PACKAGE_open-vm-tools=y
 CONFIG_PACKAGE_luci-app-koolproxyR=y
 EOF
 
 # ShadowsocksR插件:
-# cat >> .config <<EOF
+cat >> .config <<EOF
 # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks is not set
 # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server is not set
 # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks is not set
 # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray= is not set
-# EOF
+EOF
 
 # 常用LuCI插件选择:
 cat >> .config <<EOF
@@ -172,16 +163,18 @@ CONFIG_PACKAGE_luci-app-wrtbwmon=y
 # CONFIG_PACKAGE_luci-app-hd-idle is not set
 # CONFIG_PACKAGE_luci-app-ddns is not set
 # CONFIG_PACKAGE_luci-app-samba is not set
+# CONFIG_PACKAGE_luci-app-samba4 is not set
 # CONFIG_PACKAGE_luci-app-accesscontrol is not set
 # CONFIG_PACKAGE_luci-app-vsftpd is not set
 EOF
 
 # LuCI主题:
 cat >> .config <<EOF
-CONFIG_PACKAGE_luci-theme-argon=y
-CONFIG_PACKAGE_luci-theme-netgear=y
+CONFIG_PACKAGE_luci-theme-Butterfly=y
+CONFIG_PACKAGE_luci-theme-Butterfly-dark=y
 CONFIG_PACKAGE_luci-theme-opentomcat=y
-CONFIG_PACKAGE_luci-theme-bootstrap=y
+CONFIG_PACKAGE_luci-theme-opentomato=y
+CONFIG_PACKAGE_luci-theme-argon-mod=y
 EOF
 
 # 常用软件包:
