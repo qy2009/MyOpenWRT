@@ -17,7 +17,7 @@ git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 # 添加第三方软件包
 git clone https://github.com/tty228/luci-app-serverchan package/luci-app-serverchan
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
-git clone https://github.com/kang-mk/luci-app-smartinfo package/luci-app-smartinfo
+#git clone https://github.com/kang-mk/luci-app-smartinfo package/luci-app-smartinfo
 
 
 
@@ -80,13 +80,13 @@ EOF
 
 # 编译UEFI固件:
 cat >> .config <<EOF
-#CONFIG_EFI_IMAGES=y
+# CONFIG_EFI_IMAGES is not set
 EOF
 
 # IPv6支持:
 cat >> .config <<EOF
-#CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
-#CONFIG_PACKAGE_ipv6helper=y
+# CONFIG_PACKAGE_dnsmasq_full_dhcpv6 is not set
+# CONFIG_PACKAGE_ipv6helper is not set
 EOF
 
 # 多文件系统支持:
@@ -99,29 +99,56 @@ EOF
 # CONFIG_PACKAGE_kmod-fs-squashfs=y
 # EOF
 
+# 不要其他硬件支持:
+cat >> .config <<EOF
+# CONFIG_PACKAGE_kmod-8139cp is not set
+# CONFIG_PACKAGE_kmod-8139too is not set
+# CONFIG_PACKAGE_kmod-bnx2 is not set
+# CONFIG_PACKAGE_kmod-phy-realtek is not set
+# CONFIG_PACKAGE_kmod-r8125 is not set
+# CONFIG_PACKAGE_kmod-r8169 is not set
+# CONFIG_PACKAGE_kmod-usb-net-rtl8152 is not set
+# CONFIG_DEFAULT_kmod-ac97 is not set
+# CONFIG_DEFAULT_kmod-ath10k is not set
+# CONFIG_DEFAULT_kmod-ath5k is not set
+# CONFIG_DEFAULT_kmod-ath9k is not set
+# CONFIG_DEFAULT_kmod-ath9k-htc is not set
+# CONFIG_DEFAULT_kmod-sound-hda-codec-realtek is not set
+# CONFIG_DEFAULT_kmod-sound-hda-codec-via is not set
+# CONFIG_DEFAULT_kmod-sound-hda-core is not set
+# CONFIG_DEFAULT_kmod-sound-via82xx is not set
+# CONFIG_DEFAULT_kmod-usb-audio is not set
+# CONFIG_DEFAULT_kmod-usb-hid is not set
+# CONFIG_DEFAULT_kmod-usb-net is not set
+# CONFIG_DEFAULT_kmod-usb-net-asix is not set
+# CONFIG_DEFAULT_kmod-usb-net-asix-ax88179 is not set
+# CONFIG_DEFAULT_kmod-usb-net-rtl8150 is not set
+# CONFIG_DEFAULT_kmod-usb-net-rtl8152 is not set
+EOF
+
 # USB3.0支持:
 # cat >> .config <<EOF
-# CONFIG_PACKAGE_kmod-usb-ohci=y
-# CONFIG_PACKAGE_kmod-usb-ohci-pci=y
-# CONFIG_PACKAGE_kmod-usb2=y
-# CONFIG_PACKAGE_kmod-usb2-pci=y
-# CONFIG_PACKAGE_kmod-usb3=y
+# CONFIG_PACKAGE_kmod-usb-ohci is not set
+# CONFIG_PACKAGE_kmod-usb-ohci-pci is not set
+# CONFIG_PACKAGE_kmod-usb2 is not set
+# CONFIG_PACKAGE_kmod-usb2-pci is not set
+# CONFIG_PACKAGE_kmod-usb3 is not set
 # EOF
 
 # 第三方插件选择:
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-app-serverchan=y
 CONFIG_PACKAGE_luci-app-adguardhome=y
-CONFIG_PACKAGE_luci-app-smartinfo=y
+# CONFIG_PACKAGE_luci-app-smartinfo is not set
 CONFIG_PACKAGE_open-vm-tools=y
 EOF
 
 # ShadowsocksR插件:
 # cat >> .config <<EOF
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks=y
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server=y
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks=y
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=y
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray= is not set
 # EOF
 
 # 常用LuCI插件选择:
@@ -136,9 +163,9 @@ cat >> .config <<EOF
 # CONFIG_PACKAGE_luci-app-ipsec-vpnd is not set
 CONFIG_PACKAGE_luci-app-adbyby-plus=y
 CONFIG_PACKAGE_luci-app-softethervpn=y
-CONFIG_PACKAGE_luci-app-haproxy-tcp=y
+# CONFIG_PACKAGE_luci-app-haproxy-tcp is not set
 CONFIG_PACKAGE_luci-app-webadmin=y
-CONFIG_PACKAGE_luci-app-frpc=y
+# CONFIG_PACKAGE_luci-app-frpc is not set
 CONFIG_PACKAGE_luci-app-wrtbwmon=y
 # CONFIG_PACKAGE_luci-app-hd-idle=y
 EOF
@@ -146,7 +173,9 @@ EOF
 # LuCI主题:
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-theme-argon=y
-# CONFIG_PACKAGE_luci-theme-netgear=y
+CONFIG_PACKAGE_luci-theme-netgear=y
+CONFIG_PACKAGE_luci-theme-opentomcat=y
+CONFIG_PACKAGE_luci-theme-bootstrap=y
 EOF
 
 # 常用软件包:
