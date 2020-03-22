@@ -17,6 +17,7 @@ git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 # 添加第三方软件包
 git clone https://github.com/tty228/luci-app-serverchan package/luci-app-serverchan
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
+git clone https://github.com/jefferymvp/luci-app-koolproxyR
 #git clone https://github.com/kang-mk/luci-app-smartinfo package/luci-app-smartinfo
 
 
@@ -141,6 +142,7 @@ CONFIG_PACKAGE_luci-app-serverchan=y
 CONFIG_PACKAGE_luci-app-adguardhome=y
 # CONFIG_PACKAGE_luci-app-smartinfo is not set
 CONFIG_PACKAGE_open-vm-tools=y
+CONFIG_PACKAGE_luci-app-koolproxyR=y
 EOF
 
 # ShadowsocksR插件:
