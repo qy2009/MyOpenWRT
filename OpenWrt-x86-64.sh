@@ -10,10 +10,14 @@
 # 定制默认IP
 sed -i 's/10.0.0.1/10.0.0.254/g' package/base-files/files/bin/config_generate
 
+# 替换默认Argon主题
+rm -rf package/lean/luci-theme-argon
+git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+
 # 添加第三方软件包
 git clone https://github.com/tty228/luci-app-serverchan package/luci-app-serverchan
 git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
-git clone https://github.com/jefferymvp/luci-app-koolproxyR
+git clone https://github.com/jefferymvp/luci-app-koolproxyR package/luci-app-koolproxyR
 
 #创建自定义配置文件 - OpenWrt-x86-64
 
@@ -182,6 +186,15 @@ CONFIG_PACKAGE_kmod-vmxnet3=y
 # CONFIG_PACKAGE_kmod-usb-wdm is not set
 EOF
 
+# ShadowsocksR插件:
+cat >> .config <<EOF
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray is not set
+EOF
+
+
 # 第三方插件选择:
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-app-serverchan=y
@@ -218,7 +231,8 @@ EOF
 
 # LuCI主题:
 cat >> .config <<EOF
-CONFIG_PACKAGE_luci-theme-opentomato=y
+CONFIG_PACKAGE_luci-theme-argon=y
+CONFIG_PACKAGE_luci-theme-material=y
 CONFIG_PACKAGE_luci-theme-netgear=y
 EOF
 
