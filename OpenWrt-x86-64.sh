@@ -219,9 +219,8 @@ EOF
 
 # LuCI主题:
 cat >> .config <<EOF
-CONFIG_PACKAGE_luci-theme-opentomcat=y
 CONFIG_PACKAGE_luci-theme-opentomato=y
-CONFIG_PACKAGE_luci-theme-argon-mod=y
+CONFIG_PACKAGE_luci-theme-netgear=y
 EOF
 
 # 常用软件包:
