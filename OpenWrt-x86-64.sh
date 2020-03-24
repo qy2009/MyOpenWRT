@@ -89,6 +89,11 @@ CONFIG_PACKAGE_luci-app-wrtbwmon=y
 # CONFIG_PACKAGE_autosamba is not set
 # CONFIG_PACKAGE_luci-app-accesscontrol is not set
 # CONFIG_PACKAGE_luci-app-vsftpd is not set
+# CONFIG_PACKAGE_luci-app-pppoe-relay is not set
+# CONFIG_PACKAGE_luci-app-pppoe-server is not set
+# CONFIG_PACKAGE_luci-app-passwall is not set
+# CONFIG_PACKAGE_luci-app-pptp-vpnserver-manyusers is not set
+# CONFIG_PACKAGE_luci-app-torjan-server is not set
 EOF
 
 # LuCI主题:
@@ -96,6 +101,12 @@ cat >> .config <<EOF
 CONFIG_PACKAGE_luci-theme-argon=y
 CONFIG_PACKAGE_luci-theme-material=y
 CONFIG_PACKAGE_luci-theme-netgear=y
+EOF
+
+# 硬件:
+cat >> .config <<EOF
+CONFIG_PACKAGE_kmod_ath5k=n
+# CONFIG_PACKAGE_kmod_ath9k is not set
 EOF
 
 # 常用软件包:
