@@ -49,6 +49,7 @@ EOF
 
 # ShadowsocksR插件:
 cat >> .config <<EOF
+# CONFIG_PACKAGE_luci-app-ssr-plus is not set
 # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks is not set
 # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server is not set
 # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks is not set
@@ -105,8 +106,12 @@ EOF
 
 # 硬件:
 cat >> .config <<EOF
-CONFIG_PACKAGE_kmod_ath5k=n
+# CONFIG_PACKAGE_kmod_ath is not set
+# CONFIG_PACKAGE_kmod_ath5k is not set
 # CONFIG_PACKAGE_kmod_ath9k is not set
+# CONFIG_PACKAGE_kmod_ath10k is not set
+# CONFIG_PACKAGE_kmod_ath9k-common is not set
+# CONFIG_PACKAGE_kmod_ath9k-htc is not set
 EOF
 
 # 常用软件包:
