@@ -61,7 +61,7 @@ EOF
 
 # 第三方插件选择:
 cat >> .config <<EOF
-CONFIG_PACKAGE_luci-app-watchcat=y
+CONFIG_PACKAGE_luci-app-wachcat=y
 CONFIG_PACKAGE_luci-app-adguardhome=y
 CONFIG_PACKAGE_open-vm-tools=y
 CONFIG_PACKAGE_luci-app-koolproxyR=y
