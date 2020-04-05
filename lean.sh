@@ -8,7 +8,7 @@
 #=================================================
 
 # 定制默认IP
-sed -i 's/10.0.0.1/10.0.0.254/g' package/base-files/files/bin/config_generate
+sed -i 's#192.168.1.1#10.0.0.1#g' package/base-files/files/bin/config_generate
 
 # 替换默认Argon主题
 # rm -rf package/lean/luci-theme-argon
@@ -16,7 +16,7 @@ sed -i 's/10.0.0.1/10.0.0.254/g' package/base-files/files/bin/config_generate
 
 # 添加第三方软件包
 # git clone https://github.com/tty228/luci-app-serverchan package/luci-app-serverchan
-git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
+# git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
 git clone https://github.com/jefferymvp/luci-app-koolproxyR package/luci-app-koolproxyR
 
 #创建自定义配置文件 - OpenWrt-x86-64
@@ -61,11 +61,11 @@ EOF
 
 # 第三方插件选择:
 cat >> .config <<EOF
-CONFIG_PACKAGE_luci-app-wachcat=y
-CONFIG_PACKAGE_luci-app-adguardhome=y
+# CONFIG_PACKAGE_luci-app-wachcat is not set
+# CONFIG_PACKAGE_luci-app-adguardhome is not set
 CONFIG_PACKAGE_open-vm-tools=y
 CONFIG_PACKAGE_luci-app-koolproxyR=y
-CONFIG_PACKAGE_luci-app-control-weburl=y
+# CONFIG_PACKAGE_luci-app-control-weburl is not set
 EOF
 
 # 常用LuCI插件选择:
@@ -77,7 +77,7 @@ cat >> .config <<EOF
 # CONFIG_PACKAGE_luci-app-v2ray-server is not set
 # CONFIG_PACKAGE_luci-app-pptp-server is not set
 # CONFIG_PACKAGE_luci-app-ipsec-vpnd is not set
-CONFIG_PACKAGE_luci-app-adbyby-plus=y
+# CONFIG_PACKAGE_luci-app-adbyby-plus is not set
 # CONFIG_PACKAGE_luci-app-softethervpn= is not set
 # CONFIG_PACKAGE_luci-app-haproxy-tcp is not set
 CONFIG_PACKAGE_luci-app-webadmin=y
