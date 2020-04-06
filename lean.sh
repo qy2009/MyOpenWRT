@@ -71,6 +71,7 @@ EOF
 # 常用LuCI插件选择:
 cat >> .config <<EOF
 # CONFIG_PACKAGE_luci-app-transmission is not set
+# CONFIG_PACKAGE_luci-app-airplay2 is not set
 # CONFIG_PACKAGE_luci-app-qbittorrent is not set
 # CONFIG_PACKAGE_luci-app-xlnetacc is not set
 # CONFIG_PACKAGE_luci-app-zerotier is not set
@@ -102,16 +103,6 @@ cat >> .config <<EOF
 CONFIG_PACKAGE_luci-theme-argon=y
 CONFIG_PACKAGE_luci-theme-material=y
 CONFIG_PACKAGE_luci-theme-netgear=y
-EOF
-
-# 硬件:
-cat >> .config <<EOF
-# CONFIG_PACKAGE_kmod_ath is not set
-# CONFIG_PACKAGE_kmod_ath5k is not set
-# CONFIG_PACKAGE_kmod_ath9k is not set
-# CONFIG_PACKAGE_kmod_ath10k is not set
-# CONFIG_PACKAGE_kmod_ath9k-common is not set
-# CONFIG_PACKAGE_kmod_ath9k-htc is not set
 EOF
 
 # 常用软件包:
