@@ -68,12 +68,11 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds install -a
+        
     - name: Import external feeds
       working-directory: ./openwrt
-      run: |
-      git clone https://github.com/jefferymvp/luci-app-koolproxyR package/luci-app-koolproxyR
-    #    git clone "your_github_link" package/"your_folder_name"      
-
+      run: git clone https://github.com/jefferymvp/luci-app-koolproxyR package/luci-app-koolproxyR
+      
     - name: Configuration Customization - Build_x86_64
       env:
         CONFIG_FILE: 'esir.config'
