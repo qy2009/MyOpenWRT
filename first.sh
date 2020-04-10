@@ -8,7 +8,7 @@
 #=================================================
 
 # 定制默认IP
-sed -i 's/10.0.0.1/10.0.0.254/g' package/base-files/files/bin/config_generate
+sed -i 's#192.168.1.1#10.0.0.1#g' package/base-files/files/bin/config_generate
 
 # 替换默认Argon主题
 # rm -rf package/lean/luci-theme-argon
@@ -16,7 +16,7 @@ sed -i 's/10.0.0.1/10.0.0.254/g' package/base-files/files/bin/config_generate
 
 # 添加第三方软件包
 # git clone https://github.com/tty228/luci-app-serverchan package/luci-app-serverchan
-git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
+#git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
 git clone https://github.com/jefferymvp/luci-app-koolproxyR package/luci-app-koolproxyR
 
 #创建自定义配置文件 - OpenWrt-x86-64
@@ -70,6 +70,7 @@ EOF
 # 常用LuCI插件选择:
 cat >> .config <<EOF
 # CONFIG_PACKAGE_luci-app-transmission is not set
+# CONFIG_PACKAGE_luci-app-airplay2 is not set
 # CONFIG_PACKAGE_luci-app-qbittorrent is not set
 # CONFIG_PACKAGE_luci-app-xlnetacc is not set
 # CONFIG_PACKAGE_luci-app-zerotier is not set
