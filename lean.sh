@@ -61,7 +61,7 @@ EOF
 
 # 第三方插件选择:
 cat >> .config <<EOF
-# CONFIG_PACKAGE_luci-app-wachcat is not set
+# CONFIG_PACKAGE_luci-app-watchcat is not set
 # CONFIG_PACKAGE_luci-app-adguardhome is not set
 CONFIG_PACKAGE_open-vm-tools=y
 CONFIG_PACKAGE_luci-app-koolproxyR=y
@@ -70,6 +70,9 @@ EOF
 
 # 常用LuCI插件选择:
 cat >> .config <<EOF
+# CONFIG_PACKAGE_luci-app-music-remote-center is not set
+# CONFIG_PACKAGE_luci-app-openvpn-server is not set
+# CONFIG_PACKAGE_luci-app-amule is not set
 # CONFIG_PACKAGE_luci-app-transmission is not set
 # CONFIG_PACKAGE_luci-app-airplay2 is not set
 # CONFIG_PACKAGE_luci-app-qbittorrent is not set
