@@ -49,6 +49,7 @@ EOF
 
 # ShadowsocksR插件:
 cat >> .config <<EOF
+# CONFIG_PACKAGE_luci-app-ssr-plus is not set
 # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks is not set
 # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server is not set
 # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks is not set
@@ -60,15 +61,17 @@ EOF
 
 # 第三方插件选择:
 cat >> .config <<EOF
-CONFIG_PACKAGE_luci-app-watchcat=y
-CONFIG_PACKAGE_luci-app-adguardhome=y
+# CONFIG_PACKAGE_luci-app-watchcat is not set
+# CONFIG_PACKAGE_luci-app-adguardhome is not set
 CONFIG_PACKAGE_open-vm-tools=y
 CONFIG_PACKAGE_luci-app-koolproxyR=y
-CONFIG_PACKAGE_luci-app-control-weburl=y
 EOF
 
 # 常用LuCI插件选择:
 cat >> .config <<EOF
+# CONFIG_PACKAGE_luci-app-music-remote-center is not set
+# CONFIG_PACKAGE_luci-app-openvpn-server is not set
+# CONFIG_PACKAGE_luci-app-amule is not set
 # CONFIG_PACKAGE_luci-app-transmission is not set
 # CONFIG_PACKAGE_luci-app-airplay2 is not set
 # CONFIG_PACKAGE_luci-app-qbittorrent is not set
@@ -77,7 +80,7 @@ cat >> .config <<EOF
 # CONFIG_PACKAGE_luci-app-v2ray-server is not set
 # CONFIG_PACKAGE_luci-app-pptp-server is not set
 # CONFIG_PACKAGE_luci-app-ipsec-vpnd is not set
-CONFIG_PACKAGE_luci-app-adbyby-plus=y
+# CONFIG_PACKAGE_luci-app-adbyby-plus is not set
 # CONFIG_PACKAGE_luci-app-softethervpn= is not set
 # CONFIG_PACKAGE_luci-app-haproxy-tcp is not set
 CONFIG_PACKAGE_luci-app-webadmin=y
@@ -100,14 +103,6 @@ EOF
 # LuCI主题:
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-theme-argon=y
-CONFIG_PACKAGE_luci-theme-material=y
-CONFIG_PACKAGE_luci-theme-netgear=y
-EOF
-
-# 硬件:
-cat >> .config <<EOF
-CONFIG_PACKAGE_kmod_ath5k=n
-# CONFIG_PACKAGE_kmod_ath9k is not set
 EOF
 
 # 常用软件包:
