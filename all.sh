@@ -8,7 +8,7 @@
 #=================================================
 
 # 定制默认IP
-sed -i 's#192.168.1.1#10.0.0.1#g' package/base-files/files/bin/config_generate
+# sed -i 's#192.168.1.1#10.0.0.1#g' package/base-files/files/bin/config_generate
 
 # 替换默认Argon主题
 # rm -rf package/lean/luci-theme-argon
@@ -57,8 +57,6 @@ EOF
 # LuCI主题:
 cat >> .config <<EOF
 CONFIG_PACKAGE_luci-theme-argon=y
-CONFIG_PACKAGE_luci-theme-material=y
-CONFIG_PACKAGE_luci-theme-netgear=y
 EOF
 
 # 常用软件包:
