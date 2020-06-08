@@ -8,15 +8,17 @@
 #=================================================
 
 # 定制默认IP
-sed -i 's#192.168.1.1#10.0.0.1#g' package/base-files/files/bin/config_generate
+# sed -i 's#192.168.1.1#10.0.0.1#g' package/base-files/files/bin/config_generate
 
 # 替换默认Argon主题
 # rm -rf package/lean/luci-theme-argon
 # git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+rm -rf package/lean/luci-app-unblockneteasemusic
+git clone https://github.com/project-openwrt/luci-app-unblockneteasemusic.git
 
 # 添加第三方软件包
 # git clone https://github.com/tty228/luci-app-serverchan package/luci-app-serverchan
-#git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
+# git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
 git clone https://github.com/jefferymvp/luci-app-koolproxyR package/luci-app-koolproxyR
 
 #创建自定义配置文件 - OpenWrt-x86-64
@@ -98,6 +100,7 @@ CONFIG_PACKAGE_luci-app-wrtbwmon=y
 # CONFIG_PACKAGE_luci-app-passwall is not set
 # CONFIG_PACKAGE_luci-app-pptp-vpnserver-manyusers is not set
 # CONFIG_PACKAGE_luci-app-torjan-server is not set
+CONFIG_PACKAGE_luci-app-unblockneteasemusic=y
 EOF
 
 # LuCI主题:
