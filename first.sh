@@ -13,7 +13,6 @@
 # 替换默认Argon主题
 # rm -rf package/lean/luci-theme-argon
 # git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-rm -rf package/lean/luci-app-unblockneteasemusic
 git clone https://github.com/project-openwrt/luci-app-unblockneteasemusic.git
 
 # 添加第三方软件包
@@ -100,6 +99,7 @@ CONFIG_PACKAGE_luci-app-wrtbwmon=y
 # CONFIG_PACKAGE_luci-app-passwall is not set
 # CONFIG_PACKAGE_luci-app-pptp-vpnserver-manyusers is not set
 # CONFIG_PACKAGE_luci-app-torjan-server is not set
+# CONFIG_PACKAGE_luci-app-unblockmusic is not set
 CONFIG_PACKAGE_luci-app-unblockneteasemusic=y
 EOF
 
