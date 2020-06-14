@@ -13,7 +13,7 @@
 # 替换默认Argon主题
 # rm -rf package/lean/luci-theme-argon
 # git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-git clone https://github.com/project-openwrt/luci-app-unblockneteasemusic.git
+git clone https://github.com/project-openwrt/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
 
 # 添加第三方软件包
 # git clone https://github.com/tty228/luci-app-serverchan package/luci-app-serverchan
