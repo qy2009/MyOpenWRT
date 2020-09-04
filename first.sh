@@ -16,8 +16,7 @@
 # git clone https://github.com/project-openwrt/luci-app-unblockneteasemusic package/luci-app-unblockneteasemusic
 
 # 添加第三方软件包
-# git clone https://github.com/tty228/luci-app-serverchan package/luci-app-serverchan
-# git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
+git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
 git clone https://github.com/jefferymvp/luci-app-koolproxyR package/luci-app-koolproxyR
 
 #创建自定义配置文件 - OpenWrt-x86-64
@@ -63,7 +62,7 @@ EOF
 # 第三方插件选择:
 cat >> .config <<EOF
 # CONFIG_PACKAGE_luci-app-watchcat is not set
-# CONFIG_PACKAGE_luci-app-adguardhome is not set
+CONFIG_PACKAGE_luci-app-adguardhome=y
 CONFIG_PACKAGE_open-vm-tools=y
 CONFIG_PACKAGE_luci-app-koolproxyR=y
 EOF
